@@ -110,7 +110,8 @@ namespace Uwp_Discord
         {
             Frame rootFrame = Window.Current.Content as Frame;
             rootFrame.Navigate(typeof(MainPage), _mXboxGameBarWidget);
-            rootFrame.Width = 800;
+            //rootFrame.Width = 800;
+            rootFrame.Width = 1200;  // JK - I wanted it wider by default
             rootFrame.Height = 600;
             Size size = new Size(rootFrame.Width, rootFrame.Height);
             ApplicationView.GetForCurrentView().SetPreferredMinSize(size);

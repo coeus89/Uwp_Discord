@@ -8,15 +8,15 @@
   IgnorableNamespaces="uap mp">
 
   <Identity
-    Name="e1a51678-5648-4185-bcbd-052522002a6c"
-    Publisher="CN=Tim Graupmann"
-    Version="1.0.0.0" />
+    Name="e1a51678-5648-4185-bcbd-052522002a6d"
+    Publisher="CN=timot"
+    Version="1.1.0.0" />
 
   <mp:PhoneIdentity PhoneProductId="e1a51678-5648-4185-bcbd-052522002a6c" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
     <DisplayName>Uwp_Discord</DisplayName>
-    <PublisherDisplayName>timot</PublisherDisplayName>
+    <PublisherDisplayName>timot (See tgraupmann on Github) &amp; Jonathan Karamavros (minor changes)</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
 
@@ -102,5 +102,9 @@
 
   <Capabilities>
     <Capability Name="internetClient" />
+    <Capability Name="internetClientServer"/>
+    <DeviceCapability Name="location"/>
+    <DeviceCapability Name="webcam"/>
+    <DeviceCapability Name="microphone"/>
   </Capabilities>
 </Package>
