@@ -10,7 +10,7 @@
   <Identity
     Name="e1a51678-5648-4185-bcbd-052522002a6d"
     Publisher="CN=timot"
-    Version="1.1.0.0" />
+    Version="1.2.0.0" />
 
   <mp:PhoneIdentity PhoneProductId="e1a51678-5648-4185-bcbd-052522002a6c" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
@@ -33,10 +33,10 @@
       Executable="$targetnametoken$.exe"
       EntryPoint="Uwp_Discord.App">
       <uap:VisualElements
-        DisplayName="Uwp_Discord"
+        DisplayName="Discord_Widget"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png"
-        Description="Uwp_Discord"
+        Description="Discord_Widget"
         BackgroundColor="transparent">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png"/>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />
@@ -72,6 +72,11 @@
 					</uap3:Properties>
 				</uap3:AppExtension>
 			</uap3:Extension>
+			<Extension Category="windows.backgroundTasks" EntryPoint="Uwp_Discord.App">
+				<BackgroundTasks>
+					<Task Type="audio"/>
+				</BackgroundTasks>
+			</Extension>
 		</Extensions>
     </Application>
   </Applications>
@@ -103,6 +108,10 @@
   <Capabilities>
     <Capability Name="internetClient" />
     <Capability Name="internetClientServer"/>
+    <uap:Capability Name="voipCall"/>
+    <uap3:Capability Name="backgroundMediaPlayback"/>
+    <uap:Capability Name="picturesLibrary"/>
+    <uap:Capability Name="removableStorage"/>
     <DeviceCapability Name="location"/>
     <DeviceCapability Name="webcam"/>
     <DeviceCapability Name="microphone"/>

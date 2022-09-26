@@ -6,8 +6,10 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
+using Windows.ApplicationModel.ExtendedExecution;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Core;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -16,6 +18,10 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using System.ServiceModel.Dispatcher;
+using System.Threading;
+using System.Threading.Tasks;
+using Windows.ApplicationModel.Background;
 
 namespace Uwp_Discord
 {
@@ -25,6 +31,12 @@ namespace Uwp_Discord
     sealed partial class App : Application
     {
         private XboxGameBarWidget _mXboxGameBarWidget = null;
+
+        //private Window rootPage = Window.Current;
+
+        //private ExtendedExecutionSession session = null;
+        //private Timer periodicTimer = null;
+
 
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
@@ -101,21 +113,59 @@ namespace Uwp_Discord
                             return;
                     }
 
+                    //var newSession = new ExtendedExecutionSession();
+                    //newSession.Reason = ExtendedExecutionReason.Unspecified;
+                    //newSession.Revoked += SessionRevoked;
+                    //ExtendedExecutionResult result = await newSession.RequestExtensionAsync();
+
+                    //switch (result)
+                    //{
+                    //    case ExtendedExecutionResult.Allowed:
+                    //        Window.Current.Activate();
+                    //        break;
+
+                    //    default:
+                    //    case ExtendedExecutionResult.Denied:
+                    //        Window.Current.Activate();
+                            
+                    //        rootPage..NotifyUser("Extended execution revoked due to system policy.", NotifyType.StatusMessage);
+                    //        break;
+                    //}
+
                     Window.Current.Activate();
                 }
             }
         }
+
+        //private async void SessionRevoked(object sender, ExtendedExecutionRevokedEventArgs args)
+        //{
+        //    await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+        //    {
+        //        switch (args.Reason)
+        //        {
+        //            case ExtendedExecutionRevokedReason.Resumed:
+        //                rootPage.NotifyUser("Extended execution revoked due to returning to foreground.", NotifyType.StatusMessage);
+        //                break;
+
+        //            case ExtendedExecutionRevokedReason.SystemPolicy:
+        //                rootPage.NotifyUser("Extended execution revoked due to system policy.", NotifyType.StatusMessage);
+        //                break;
+        //        }
+
+        //        EndExtendedExecution();
+        //    });
+        //}
 
         public void ShowMainPage()
         {
             Frame rootFrame = Window.Current.Content as Frame;
             rootFrame.Navigate(typeof(MainPage), _mXboxGameBarWidget);
             //rootFrame.Width = 800;
-            rootFrame.Width = 1200;  // JK - I wanted it wider by default
-            rootFrame.Height = 600;
-            Size size = new Size(rootFrame.Width, rootFrame.Height);
-            ApplicationView.GetForCurrentView().SetPreferredMinSize(size);
-            ApplicationView.GetForCurrentView().TryResizeView(size);
+            //rootFrame.Width = 1200;  // JK - I wanted it wider by default
+            //rootFrame.Height = 600;
+            //Size size = new Size(rootFrame.Width, rootFrame.Height);
+            //ApplicationView.GetForCurrentView().SetPreferredMinSize(size);
+            //ApplicationView.GetForCurrentView().TryResizeView(size);
         }
 
         /// <summary>
